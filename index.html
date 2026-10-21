@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Александр Фролов — 3D Graphic Designer</title>
+  <meta name="description" content="Портфолио 3D-дизайнера Александра Фролова. 12 лет опыта. Фотореалистичная продуктовая и архитектурная визуализация, character design, motion-графика." />
+  <meta name="theme-color" content="#0c0c0c" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+</head>
+<body class="light">
+  <!-- Custom Cursor -->
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-follower" aria-hidden="true"></div>
+  <div class="cursor-trail" aria-hidden="true"></div>
+
+  <!-- Loader -->
+  <div id="loader">
+    <div class="loader-content">
+      <div class="loader-logo">AF</div>
+      <div class="loader-bar"><div class="loader-progress"></div></div>
+      <div class="loader-text">Loading experience...</div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <header class="header">
+    <div class="logo magnetic">
+      <a href="#hero">AF</a>
+    </div>
+    <nav class="nav" aria-label="Main">
+      <a href="#about" class="nav-link magnetic" data-ru="Обо мне" data-en="About">Обо мне</a>
+      <a href="#works" class="nav-link magnetic" data-ru="Работы" data-en="Works">Работы</a>
+      <a href="#process" class="nav-link magnetic" data-ru="Процесс" data-en="Process">Процесс</a>
+      <a href="#services" class="nav-link magnetic" data-ru="Услуги" data-en="Services">Услуги</a>
+      <a href="#contact" class="nav-link magnetic" data-ru="Контакты" data-en="Contact">Контакты</a>
+    </nav>
+    <div class="header-controls">
+      <button class="theme-toggle magnetic" aria-label="Toggle theme" type="button">
+        <span class="sun">☀</span>
+        <span class="moon">☾</span>
+      </button>
+      <button class="lang-toggle magnetic" aria-label="Toggle language" type="button">
+        <span class="lang-ru active">RU</span>
+        <span class="lang-en">EN</span>
+      </button>
+      <button class="menu-toggle magnetic" aria-label="Menu" type="button">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" aria-hidden="true">
+    <a href="#about" class="mobile-link" data-ru="Обо мне" data-en="About">Обо мне</a>
+    <a href="#works" class="mobile-link" data-ru="Работы" data-en="Works">Работы</a>
+    <a href="#process" class="mobile-link" data-ru="Процесс" data-en="Process">Процесс</a>
+    <a href="#services" class="mobile-link" data-ru="Услуги" data-en="Services">Услуги</a>
+    <a href="#reviews" class="mobile-link" data-ru="Отзывы" data-en="Reviews">Отзывы</a>
+    <a href="#contact" class="mobile-link" data-ru="Контакты" data-en="Contact">Контакты</a>
+  </div>
+
+  <main>
+    <!-- HERO -->
+    <section id="hero" class="hero">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-content">
+        <div class="hero-badge magnetic">
+          <span data-ru="3D GRAPHIC DESIGNER · 12 ЛЕТ ОПЫТА" data-en="3D GRAPHIC DESIGNER · 12 YEARS EXP">3D GRAPHIC DESIGNER · 12 ЛЕТ ОПЫТА</span>
+        </div>
+        <h1 class="hero-title">
+          <span class="line" data-ru="Александр" data-en="Alexander">Александр</span>
+          <span class="line" data-ru="Фролов" data-en="Frolov">Фролов</span>
+        </h1>
+        <p class="hero-subtitle" data-ru="Создаю фотореалистичные миры, в которых хочется жить и к которым хочется прикоснуться." data-en="I create photorealistic worlds you want to live in and touch.">
+          Создаю фотореалистичные миры, в которых хочется жить и к которым хочется прикоснуться.
+        </p>
+        <div class="hero-cta">
+          <a href="#works" class="btn btn-primary magnetic" data-ru="Смотреть работы" data-en="View works">Смотреть работы</a>
+          <a href="#contact" class="btn btn-outline magnetic" data-ru="Связаться" data-en="Get in touch">Связаться</a>
+        </div>
+      </div>
+      <div class="scroll-hint">
+        <span data-ru="листай" data-en="scroll">листай</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number">01</span>
+          <h2 class="section-title" data-ru="Обо мне" data-en="About">Обо мне</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-text">
+            <p class="about-lead" data-ru="Я — Александр Дмитриевич Фролов, 3D-графический дизайнер из Узловой, Тульская область. Уже 12 лет я превращаю идеи в объёмные, живые изображения." data-en="I am Alexander Dmitrievich Frolov, a 3D graphic designer from Uzlovaya, Tula Oblast. For 12 years I have been turning ideas into volumetric, living images.">
+              Я — Александр Дмитриевич Фролов, 3D-графический дизайнер из Узловой, Тульская область. Уже 12 лет я превращаю идеи в объёмные, живые изображения.
+            </p>
+            <p data-ru="Моя специализация — фотореалистичная продуктовая и архитектурная визуализация, character design и motion-графика. Работаю с клиентами по всему миру, сочетая техническую точность с художественным вкусом. Каждый проект начинается с глубокого понимания задачи и заканчивается изображением, которое продаёт, вдохновляет и остаётся в памяти." data-en="My focus is photorealistic product and architectural visualization, character design and motion graphics. I work with clients worldwide, combining technical precision with artistic taste. Every project starts with a deep understanding of the brief and ends with an image that sells, inspires and stays in memory.">
+              Моя специализация — фотореалистичная продуктовая и архитектурная визуализация, character design и motion-графика. Работаю с клиентами по всему миру, сочетая техническую точность с художественным вкусом. Каждый проект начинается с глубокого понимания задачи и заканчивается изображением, которое продаёт, вдохновляет и остаётся в памяти.
+            </p>
+            <div class="about-stats">
+              <div class="stat">
+                <span class="stat-num" data-count="12">0</span>
+                <span class="stat-label" data-ru="лет опыта" data-en="years exp.">лет опыта</span>
+              </div>
+              <div class="stat">
+                <span class="stat-num" data-count="180">0</span>
+                <span class="stat-label" data-ru="проектов" data-en="projects">проектов</span>
+              </div>
+              <div class="stat">
+                <span class="stat-num" data-count="40">0</span>
+                <span class="stat-label" data-ru="клиентов" data-en="clients">клиентов</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-skills">
+            <h3 data-ru="Инструменты" data-en="Tools">Инструменты</h3>
+            <div class="skills-cloud">
+              <span class="skill magnetic">Blender</span>
+              <span class="skill magnetic">Cinema 4D</span>
+              <span class="skill magnetic">Octane</span>
+              <span class="skill magnetic">Redshift</span>
+              <span class="skill magnetic">ZBrush</span>
+              <span class="skill magnetic">Substance</span>
+              <span class="skill magnetic">After Effects</span>
+              <span class="skill magnetic">Photoshop</span>
+              <span class="skill magnetic">Unreal Engine</span>
+              <span class="skill magnetic">Marvelous Designer</span>
+            </div>
+            <div class="about-extra">
+              <h4 data-ru="Дополнительно" data-en="Also">Дополнительно</h4>
+              <ul>
+                <li data-ru="Полный цикл: от концепта до финального рендера и композитинга" data-en="Full pipeline: from concept to final render and compositing">Полный цикл: от концепта до финального рендера и композитинга</li>
+                <li data-ru="Работа с брендами, студиями и частными заказчиками" data-en="Work with brands, studios and private clients">Работа с брендами, студиями и частными заказчиками</li>
+                <li data-ru="Сроки от 3 дней до 6 недель в зависимости от сложности" data-en="Timelines from 3 days to 6 weeks depending on complexity">Сроки от 3 дней до 6 недель в зависимости от сложности</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORKS -->
+    <section id="works" class="works section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number">02</span>
+          <h2 class="section-title" data-ru="Избранные работы" data-en="Selected Works">Избранные работы</h2>
+          <p class="section-desc" data-ru="Каждый проект — это история, рассказанная светом, формой и материалом." data-en="Every project is a story told through light, form and material.">
+            Каждый проект — это история, рассказанная светом, формой и материалом.
+          </p>
+        </div>
+
+        <div class="works-filter" role="tablist">
+          <button class="filter-btn active magnetic" data-filter="all" data-ru="Все" data-en="All" type="button">Все</button>
+          <button class="filter-btn magnetic" data-filter="product" data-ru="Продукт" data-en="Product" type="button">Продукт</button>
+          <button class="filter-btn magnetic" data-filter="arch" data-ru="Архитектура" data-en="Architecture" type="button">Архитектура</button>
+          <button class="filter-btn magnetic" data-filter="character" data-ru="Персонажи" data-en="Characters" type="button">Персонажи</button>
+          <button class="filter-btn magnetic" data-filter="motion" data-ru="Motion" data-en="Motion" type="button">Motion</button>
+        </div>
+
+        <div class="works-grid">
+          <!-- 1 Haniex -->
+          <article class="work-card tilt-card" data-category="product" data-project="haniex">
+            <a href="project.html?id=haniex" class="work-link">
+              <div class="work-image">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1000&q=90&auto=format&fit=crop" alt="Haniex Headphones 3D" loading="lazy" width="1000" height="625" />
+                <div class="work-overlay">
+                  <span class="work-year">2024</span>
+                  <h3 class="work-title">Haniex</h3>
+                  <p class="work-tags">Product · Tech</p>
+                  <span class="work-open" data-ru="Смотреть проект →" data-en="View project →">Смотреть проект →</span>
+                </div>
+              </div>
+              <div class="work-info">
+                <h3>Haniex</h3>
+                <p data-ru="Фотореалистичная визуализация премиальных наушников. Полный цикл: моделирование, UV, текстурирование, освещение Octane, композитинг. 12 финальных кадров + turntable." data-en="Photorealistic visualization of premium headphones. Full pipeline: modeling, UV, texturing, Octane lighting, compositing. 12 final frames + turntable.">
+                  Фотореалистичная визуализация премиальных наушников. Полный цикл: моделирование, UV, текстурирование, освещение Octane, композитинг. 12 финальных кадров + turntable.
+                </p>
+              </div>
+            </a>
+          </article>
+
+          <!-- 2 Aurora -->
+          <article class="work-card tilt-card" data-category="arch" data-project="aurora">
+            <a href="project.html?id=aurora" class="work-link">
+              <div class="work-image">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1000&q=90&auto=format&fit=crop" alt="Aurora Residence 3D" loading="lazy" width="1000" height="625" />
+                <div class="work-overlay">
+                  <span class="work-year">2025</span>
+                  <h3 class="work-title">Aurora Residence</h3>
+                  <p class="work-tags">Architecture · Exterior</p>
+                  <span class="work-open" data-ru="Смотреть проект →" data-en="View project →">Смотреть проект →</span>
+                </div>
+              </div>
+              <div class="work-info">
+                <h3>Aurora Residence</h3>
+                <p data-ru="Архитектурная визуализация современной виллы на побережье. Акцент на естественном свете, материалах камня и стекла. 8 ракурсов + сумерки." data-en="Architectural visualization of a modern coastal villa. Focus on natural light, stone and glass materials. 8 angles + dusk sequence.">
+                  Архитектурная визуализация современной виллы на побережье. Акцент на естественном свете, материалах камня и стекла. 8 ракурсов + сумерки.
+                </p>
+              </div>
+            </a>
+          </article>
+
+          <!-- 3 Lumina -->
+          <article class="work-card tilt-card" data-category="product" data-project="lumina">
+            <a href="project.html?id=lumina" class="work-link">
+              <div class="work-image">
+                <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=1000&q=90&auto=format&fit=crop" alt="Lumina Bottle 3D" loading="lazy" width="1000" height="625" />
+                <div class="work-overlay">
+                  <span class="work-year">2024</span>
+                  <h3 class="work-title">Lumina Bottle</h3>
+                  <p class="work-tags">Packaging · Luxury</p>
+                  <span class="work-open" data-ru="Смотреть проект →" data-en="View project →">Смотреть проект →</span>
+                </div>
+              </div>
+              <div class="work-info">
+                <h3>Lumina Bottle</h3>
+                <p data-ru="3D-визуализация флакона люксовых духов. Сложные материалы стекла, жидкости, этикетки и отражений. Серия для рекламной кампании." data-en="3D visualization of a luxury perfume bottle. Complex glass, liquid, label and reflection materials. Series for an advertising campaign.">
+                  3D-визуализация флакона люксовых духов. Сложные материалы стекла, жидкости, этикетки и отражений. Серия для рекламной кампании.
+                </p>
+              </div>
+            </a>
+          </article>
+
+          <!-- 4 Vertex -->
+          <article class="work-card tilt-card" data-category="character" data-project="vertex">
+            <a href="project.html?id=vertex" class="work-link">
+              <div class="work-image">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1000&q=90&auto=format&fit=crop" alt="Vertex Character 3D" loading="lazy" width="1000" height="625" />
+                <div class="work-overlay">
+                  <span class="work-year">2023</span>
+                  <h3 class="work-title">Vertex</h3>
+                  <p class="work-tags">Character · Game</p>
+                  <span class="work-open" data-ru="Смотреть проект →" data-en="View project →">Смотреть проект →</span>
+                </div>
+              </div>
+              <div class="work-info">
+                <h3>Vertex Character</h3>
+                <p data-ru="Создание игрового персонажа: ZBrush-скульптинг, ретопология, UV, текстурирование Substance, риггинг и базовые анимации. Готов к интеграции в Unreal." data-en="Game character creation: ZBrush sculpting, retopology, UV, Substance texturing, rigging and basic animations. Ready for Unreal integration.">
+                  Создание игрового персонажа: ZBrush-скульптинг, ретопология, UV, текстурирование Substance, риггинг и базовые анимации. Готов к интеграции в Unreal.
+                </p>
+              </div>
+            </a>
+          </article>
+
+          <!-- 5 Echo Sphere -->
+          <article class="work-card tilt-card" data-category="motion" data-project="echo">
+            <a href="project.html?id=echo" class="work-link">
+              <div class="work-image">
+                <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=1000&q=90&auto=format&fit=crop" alt="Echo Sphere Motion 3D" loading="lazy" width="1000" height="625" />
+                <div class="work-overlay">
+                  <span class="work-year">2025</span>
+                  <h3 class="work-title">Echo Sphere</h3>
+                  <p class="work-tags">Motion · Brand</p>
+                  <span class="work-open" data-ru="Смотреть проект →" data-en="View project →">Смотреть проект →</span>
+                </div>
+              </div>
+              <div class="work-info">
+                <h3>Echo Sphere</h3>
+                <p data-ru="Motion-идентификация и 3D-анимация для технологического бренда. Абстрактные формы, звуковые волны, логотип в движении. 15-секундный ролик + loop." data-en="Motion identity and 3D animation for a tech brand. Abstract forms, sound waves, logo in motion. 15-second film + loop.">
+                  Motion-идентификация и 3D-анимация для технологического бренда. Абстрактные формы, звуковые волны, логотип в движении. 15-секундный ролик + loop.
+                </p>
+              </div>
+            </a>
+          </article>
+
+          <!-- 6 Urban Pulse -->
+          <article class="work-card tilt-card" data-category="arch" data-project="urban">
+            <a href="project.html?id=urban" class="work-link">
+              <div class="work-image">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1000&q=90&auto=format&fit=crop" alt="Urban Pulse 3D" loading="lazy" width="1000" height="625" />
+                <div class="work-overlay">
+                  <span class="work-year">2024</span>
+                  <h3 class="work-title">Urban Pulse</h3>
+                  <p class="work-tags">Environment · City</p>
+                  <span class="work-open" data-ru="Смотреть проект →" data-en="View project →">Смотреть проект →</span>
+                </div>
+              </div>
+              <div class="work-info">
+                <h3>Urban Pulse</h3>
+                <p data-ru="Концептуальный городской пейзаж будущего. Сочетание архитектуры, атмосферы и неонового освещения. Мат-пейнт + 3D-элементы." data-en="Conceptual future cityscape. Mix of architecture, atmosphere and neon lighting. Matte-paint + 3D elements.">
+                  Концептуальный городской пейзаж будущего. Сочетание архитектуры, атмосферы и неонового освещения. Мат-пейнт + 3D-элементы.
+                </p>
+              </div>
+            </a>
+          </article>
+
+          <!-- 7 Neon Drift -->
+          <article class="work-card tilt-card" data-category="product" data-project="neon">
+            <a href="project.html?id=neon" class="work-link">
+              <div class="work-image">
+                <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1000&q=90&auto=format&fit=crop" alt="Neon Drift Concept Car 3D" loading="lazy" width="1000" height="625" />
+                <div class="work-overlay">
+                  <span class="work-year">2023</span>
+                  <h3 class="work-title">Neon Drift</h3>
+                  <p class="work-tags">Automotive · Concept</p>
+                  <span class="work-open" data-ru="Смотреть проект →" data-en="View project →">Смотреть проект →</span>
+                </div>
+              </div>
+              <div class="work-info">
+                <h3>Neon Drift</h3>
+                <p data-ru="Концепт-кар в неоновом стиле. Драматичное освещение, высокодетализированные материалы кузова и интерьера. Серия из 6 кадров." data-en="Neon-style concept car. Dramatic lighting, highly detailed body and interior materials. Series of 6 frames.">
+                  Концепт-кар в неоновом стиле. Драматичное освещение, высокодетализированные материалы кузова и интерьера. Серия из 6 кадров.
+                </p>
+              </div>
+            </a>
+          </article>
+
+          <!-- 8 Aether -->
+          <article class="work-card tilt-card" data-category="character" data-project="aether">
+            <a href="project.html?id=aether" class="work-link">
+              <div class="work-image">
+                <img src="https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?w=1000&q=90&auto=format&fit=crop" alt="Aether Guardian 3D" loading="lazy" width="1000" height="625" />
+                <div class="work-overlay">
+                  <span class="work-year">2025</span>
+                  <h3 class="work-title">Aether Guardian</h3>
+                  <p class="work-tags">Character · Fantasy</p>
+                  <span class="work-open" data-ru="Смотреть проект →" data-en="View project →">Смотреть проект →</span>
+                </div>
+              </div>
+              <div class="work-info">
+                <h3>Aether Guardian</h3>
+                <p data-ru="Фэнтезийный персонаж-страж: high-poly скульпт, стилизованные текстуры, cloth simulation в Marvelous Designer, готовый к анимации." data-en="Fantasy guardian character: high-poly sculpt, stylized textures, cloth simulation in Marvelous Designer, animation-ready.">
+                  Фэнтезийный персонаж-страж: high-poly скульпт, стилизованные текстуры, cloth simulation в Marvelous Designer, готовый к анимации.
+                </p>
+              </div>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process" class="process section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number">03</span>
+          <h2 class="section-title" data-ru="Как я работаю" data-en="How I work">Как я работаю</h2>
+          <p class="section-desc" data-ru="Прозрачный процесс без сюрпризов. Вы всегда знаете, на каком этапе проект и что будет дальше." data-en="Transparent process without surprises. You always know the stage and what comes next.">
+            Прозрачный процесс без сюрпризов. Вы всегда знаете, на каком этапе проект и что будет дальше.
+          </p>
+        </div>
+        <div class="process-grid">
+          <div class="process-step">
+            <span class="step-num">01</span>
+            <h3 data-ru="Бриф и референсы" data-en="Brief & references">Бриф и референсы</h3>
+            <p data-ru="Собираю задачу, цели, целевую аудиторию и визуальные референсы. Уточняю сроки и бюджет." data-en="I collect the brief, goals, target audience and visual references. Clarify deadlines and budget.">
+              Собираю задачу, цели, целевую аудиторию и визуальные референсы. Уточняю сроки и бюджет.
+            </p>
+          </div>
+          <div class="process-step">
+            <span class="step-num">02</span>
+            <h3 data-ru="Концепт и блокинг" data-en="Concept & blocking">Концепт и блокинг</h3>
+            <p data-ru="Быстрый 3D-блокинг + moodboard. Согласовываем композицию, свет и общее настроение." data-en="Quick 3D blocking + moodboard. We align on composition, light and overall mood.">
+              Быстрый 3D-блокинг + moodboard. Согласовываем композицию, свет и общее настроение.
+            </p>
+          </div>
+          <div class="process-step">
+            <span class="step-num">03</span>
+            <h3 data-ru="Детализация" data-en="Detailing">Детализация</h3>
+            <p data-ru="Моделирование, UV, текстуры, материалы. Промежуточные рендеры для правок." data-en="Modeling, UV, textures, materials. Intermediate renders for feedback.">
+              Моделирование, UV, текстуры, материалы. Промежуточные рендеры для правок.
+            </p>
+          </div>
+          <div class="process-step">
+            <span class="step-num">04</span>
+            <h3 data-ru="Финальный рендер" data-en="Final render">Финальный рендер</h3>
+            <p data-ru="Высокое разрешение, композитинг, цветокоррекция. Готовые файлы в нужных форматах." data-en="High resolution, compositing, color grading. Delivery in the required formats.">
+              Высокое разрешение, композитинг, цветокоррекция. Готовые файлы в нужных форматах.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="services section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number">04</span>
+          <h2 class="section-title" data-ru="Услуги" data-en="Services">Услуги</h2>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <span class="service-num">01</span>
+            <h3 data-ru="Продуктовая визуализация" data-en="Product visualization">Продуктовая визуализация</h3>
+            <p data-ru="Фотореалистичные рендеры товаров для e-commerce, рекламы и презентаций. От простых объектов до сложных сборок." data-en="Photorealistic product renders for e-commerce, advertising and presentations. From simple objects to complex assemblies.">
+              Фотореалистичные рендеры товаров для e-commerce, рекламы и презентаций. От простых объектов до сложных сборок.
+            </p>
+            <ul class="service-list">
+              <li data-ru="Каталожные и lifestyle-сцены" data-en="Catalog & lifestyle scenes">Каталожные и lifestyle-сцены</li>
+              <li data-ru="360° и turntable" data-en="360° and turntable">360° и turntable</li>
+              <li data-ru="Анимация продукта" data-en="Product animation">Анимация продукта</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline magnetic service-cta" data-ru="Обсудить проект" data-en="Discuss project">Обсудить проект</a>
+          </div>
+          <div class="service-card">
+            <span class="service-num">02</span>
+            <h3 data-ru="Архитектурная визуализация" data-en="Architectural visualization">Архитектурная визуализация</h3>
+            <p data-ru="Экстерьеры и интерьеры любой сложности. От эскиза до финального рендера и анимации." data-en="Exteriors and interiors of any complexity. From sketch to final render and animation.">
+              Экстерьеры и интерьеры любой сложности. От эскиза до финального рендера и анимации.
+            </p>
+            <ul class="service-list">
+              <li data-ru="Экстерьер / интерьер" data-en="Exterior / interior">Экстерьер / интерьер</li>
+              <li data-ru="Дневные и ночные сцены" data-en="Day & night scenes">Дневные и ночные сцены</li>
+              <li data-ru="Архитектурные ролики" data-en="Architectural films">Архитектурные ролики</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline magnetic service-cta" data-ru="Обсудить проект" data-en="Discuss project">Обсудить проект</a>
+          </div>
+          <div class="service-card">
+            <span class="service-num">03</span>
+            <h3 data-ru="Character Design" data-en="Character Design">Character Design</h3>
+            <p data-ru="Создание персонажей для игр, анимации и рекламы. От концепта до ригга и готовой модели." data-en="Characters for games, animation and advertising. From concept to rig and production-ready model.">
+              Создание персонажей для игр, анимации и рекламы. От концепта до ригга и готовой модели.
+            </p>
+            <ul class="service-list">
+              <li data-ru="Sculpt + retopo" data-en="Sculpt + retopo">Sculpt + retopo</li>
+              <li data-ru="Текстуры и материалы" data-en="Textures & materials">Текстуры и материалы</li>
+              <li data-ru="Риггинг и skinning" data-en="Rigging & skinning">Риггинг и skinning</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline magnetic service-cta" data-ru="Обсудить проект" data-en="Discuss project">Обсудить проект</a>
+          </div>
+          <div class="service-card">
+            <span class="service-num">04</span>
+            <h3 data-ru="Motion & Animation" data-en="Motion & Animation">Motion & Animation</h3>
+            <p data-ru="3D-анимация, motion-графика и брендинговые ролики. От 5-секундных loops до полноценных фильмов." data-en="3D animation, motion graphics and brand films. From 5-second loops to full films.">
+              3D-анимация, motion-графика и брендинговые ролики. От 5-секундных loops до полноценных фильмов.
+            </p>
+            <ul class="service-list">
+              <li data-ru="Logo animation" data-en="Logo animation">Logo animation</li>
+              <li data-ru="Product animation" data-en="Product animation">Product animation</li>
+              <li data-ru="Full CG films" data-en="Full CG films">Full CG films</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline magnetic service-cta" data-ru="Обсудить проект" data-en="Discuss project">Обсудить проект</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews" class="reviews section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number">05</span>
+          <h2 class="section-title" data-ru="Отзывы" data-en="Testimonials">Отзывы</h2>
+        </div>
+        <div class="testimonials">
+          <div class="testimonial active">
+            <blockquote data-ru="«Александр сделал визуализацию, которая превзошла все ожидания. Клиенты сразу захотели купить продукт. Работали быстро и без лишних правок.»" data-en="«Alexander delivered a visualization that exceeded all expectations. Clients immediately wanted to buy the product. Fast work with almost no revisions.»">
+              «Александр сделал визуализацию, которая превзошла все ожидания. Клиенты сразу захотели купить продукт. Работали быстро и без лишних правок.»
+            </blockquote>
+            <cite>
+              <strong>Мария К.</strong>
+              <span>Product Manager, TechBrand</span>
+            </cite>
+          </div>
+          <div class="testimonial">
+            <blockquote data-ru="«Работает быстро, точно понимает задачу и всегда предлагает сильные визуальные решения. Рекомендую как надёжного партнёра.»" data-en="«Works fast, understands the brief precisely and always offers strong visual solutions. I recommend him as a reliable partner.»">
+              «Работает быстро, точно понимает задачу и всегда предлагает сильные визуальные решения. Рекомендую как надёжного партнёра.»
+            </blockquote>
+            <cite>
+              <strong>Дмитрий С.</strong>
+              <span>Creative Director, Studio Nova</span>
+            </cite>
+          </div>
+          <div class="testimonial">
+            <blockquote data-ru="«Лучший 3D-специалист, с которым я работал. Качество на уровне международных студий, при этом коммуникация простая и человечная.»" data-en="«The best 3D specialist I have worked with. Quality at the level of international studios, yet communication is simple and human.»">
+              «Лучший 3D-специалист, с которым я работал. Качество на уровне международных студий, при этом коммуникация простая и человечная.»
+            </blockquote>
+            <cite>
+              <strong>Elena V.</strong>
+              <span>Art Director, Global Agency</span>
+            </cite>
+          </div>
+          <div class="testimonial-dots">
+            <button class="dot active" data-index="0" aria-label="1" type="button"></button>
+            <button class="dot" data-index="1" aria-label="2" type="button"></button>
+            <button class="dot" data-index="2" aria-label="3" type="button"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number">06</span>
+          <h2 class="section-title" data-ru="Давайте создадим что-то крутое" data-en="Let's create something cool">Давайте создадим что-то крутое</h2>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <div class="contact-item">
+              <span class="contact-label" data-ru="Email" data-en="Email">Email</span>
+              <a href="mailto:enemy1032@gmail.com" class="magnetic">enemy1032@gmail.com</a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label" data-ru="Telegram" data-en="Telegram">Telegram</span>
+              <a href="https://t.me/uguro" target="_blank" rel="noopener" class="magnetic">@uguro</a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label" data-ru="Телефон" data-en="Phone">Телефон</span>
+              <a href="tel:+79029026769" class="magnetic">+7 902 902-67-69</a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label" data-ru="Локация" data-en="Location">Локация</span>
+              <span data-ru="Узловая, Тульская область, Россия" data-en="Uzlovaya, Tula Oblast, Russia">Узловая, Тульская область, Россия</span>
+            </div>
+            <div class="socials">
+              <a href="https://www.behance.net/" target="_blank" rel="noopener" class="social magnetic" aria-label="Behance">Behance</a>
+              <a href="https://www.artstation.com/" target="_blank" rel="noopener" class="social magnetic" aria-label="ArtStation">ArtStation</a>
+              <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="social magnetic" aria-label="Instagram">Instagram</a>
+            </div>
+          </div>
+          <!-- Formspree: замени YOUR_FORM_ID на свой ID с formspree.io (бесплатно) -->
+          <form class="contact-form" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+            <input type="hidden" name="_subject" value="Новое сообщение с портфолио AF" />
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+            <div class="form-group">
+              <input type="text" id="name" name="name" required placeholder=" " autocomplete="name" />
+              <label for="name" data-ru="Имя" data-en="Name">Имя</label>
+            </div>
+            <div class="form-group">
+              <input type="email" id="email" name="email" required placeholder=" " autocomplete="email" />
+              <label for="email" data-ru="Email" data-en="Email">Email</label>
+            </div>
+            <div class="form-group">
+              <textarea id="message" name="message" rows="5" required placeholder=" "></textarea>
+              <label for="message" data-ru="Сообщение" data-en="Message">Сообщение</label>
+            </div>
+            <button type="submit" class="btn btn-primary magnetic" data-ru="Отправить" data-en="Send message">Отправить</button>
+            <p class="form-status" id="form-status" aria-live="polite" hidden></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">AF</div>
+        <p data-ru="© 2026 Александр Фролов. Все права защищены." data-en="© 2026 Alexander Frolov. All rights reserved.">
+          © 2026 Александр Фролов. Все права защищены.
+        </p>
+        <a href="#hero" class="back-top magnetic" data-ru="Наверх" data-en="Back to top" aria-label="Back to top">↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

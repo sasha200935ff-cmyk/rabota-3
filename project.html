@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Проект — Александр Фролов</title>
+  <meta name="description" content="Детали проекта 3D-визуализации Александра Фролова." />
+  <meta name="theme-color" content="#0c0c0c" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+</head>
+<body class="light project-page">
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-follower" aria-hidden="true"></div>
+  <div class="cursor-trail" aria-hidden="true"></div>
+
+  <header class="header scrolled">
+    <div class="logo magnetic">
+      <a href="index.html#hero">AF</a>
+    </div>
+    <nav class="nav" aria-label="Main">
+      <a href="index.html#about" class="nav-link magnetic" data-ru="Обо мне" data-en="About">Обо мне</a>
+      <a href="index.html#works" class="nav-link magnetic" data-ru="Работы" data-en="Works">Работы</a>
+      <a href="index.html#services" class="nav-link magnetic" data-ru="Услуги" data-en="Services">Услуги</a>
+      <a href="index.html#contact" class="nav-link magnetic" data-ru="Контакты" data-en="Contact">Контакты</a>
+    </nav>
+    <div class="header-controls">
+      <button class="theme-toggle magnetic" aria-label="Toggle theme" type="button">
+        <span class="sun">☀</span>
+        <span class="moon">☾</span>
+      </button>
+      <button class="lang-toggle magnetic" aria-label="Toggle language" type="button">
+        <span class="lang-ru active">RU</span>
+        <span class="lang-en">EN</span>
+      </button>
+      <a href="index.html#works" class="btn btn-outline magnetic back-works" data-ru="← Все работы" data-en="← All works">← Все работы</a>
+    </div>
+  </header>
+
+  <main class="project-main">
+    <div class="container">
+      <div class="project-hero">
+        <div class="project-meta">
+          <span class="project-year" id="p-year">2024</span>
+          <span class="project-cat" id="p-cat">Product · Tech</span>
+        </div>
+        <h1 class="project-title" id="p-title">Haniex</h1>
+        <p class="project-lead" id="p-lead">Фотореалистичная визуализация премиальных наушников.</p>
+      </div>
+
+      <div class="project-gallery">
+        <figure class="project-main-img">
+          <img id="p-img" src="" alt="" loading="eager" />
+        </figure>
+        <div class="project-thumbs" id="p-thumbs"></div>
+      </div>
+
+      <div class="project-body">
+        <div class="project-desc">
+          <h2 data-ru="О проекте" data-en="About the project">О проекте</h2>
+          <p id="p-desc"></p>
+          <h3 data-ru="Задача" data-en="Brief">Задача</h3>
+          <p id="p-brief"></p>
+          <h3 data-ru="Решение" data-en="Solution">Решение</h3>
+          <p id="p-solution"></p>
+        </div>
+        <aside class="project-sidebar">
+          <div class="sidebar-block">
+            <h4 data-ru="Инструменты" data-en="Tools">Инструменты</h4>
+            <ul id="p-tools"></ul>
+          </div>
+          <div class="sidebar-block">
+            <h4 data-ru="Срок" data-en="Timeline">Срок</h4>
+            <p id="p-time"></p>
+          </div>
+          <div class="sidebar-block">
+            <h4 data-ru="Результат" data-en="Deliverables">Результат</h4>
+            <p id="p-result"></p>
+          </div>
+          <a href="index.html#contact" class="btn btn-primary magnetic" data-ru="Заказать похожий проект" data-en="Order a similar project">Заказать похожий проект</a>
+        </aside>
+      </div>
+
+      <div class="project-nav">
+        <a href="#" class="prev-project magnetic" id="prev-link">
+          <span data-ru="← Предыдущий" data-en="← Previous">← Предыдущий</span>
+          <strong id="prev-name"></strong>
+        </a>
+        <a href="#" class="next-project magnetic" id="next-link">
+          <span data-ru="Следующий →" data-en="Next →">Следующий →</span>
+          <strong id="next-name"></strong>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">AF</div>
+        <p data-ru="© 2026 Александр Фролов. Все права защищены." data-en="© 2026 Alexander Frolov. All rights reserved.">
+          © 2026 Александр Фролов. Все права защищены.
+        </p>
+        <a href="index.html" class="back-top magnetic" aria-label="Home">↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="project.js"></script>
+</body>
+</html>
